@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8" />
+    <title>KMA Room Reservation System</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  </head>	
+  <body>
+    <Div align="right">
+      <% if session[:login_flag] == true %>
+      Welcome! <%= User.find(session[:userid]).user_name %> <a href="/">MainPage</a> 
+      <% if session[:usertype] == 1 %>| <a href="/lesson">Reserve for Lesson</a><% elsif session[:usertype] == 0 %>| <a href="/sureserveform">予約登録</a>| <a href="/sushowrsv">予約確認</a><% end %> | <a href="/logout">Log out</a>
+      <% else %>
+      Welcome! <a href="/">Log in</a> | <a href="/register">Sign up</a>
+      <% end %>
+      
+    </Div>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<Div Align="center">
+  <h1>Welcome to KMA Room Reservation System</h1>
+  <font color="red">
+    <% if session[:failure] == true %>
+    <% puts "wrong" %>
+    Wrong Username or Password.<br>Try again.
+    <% end %>
+  </font>
+
+  <table border>
+    <form method="post" action="/auth">
+      <tr>
+	<td>UserID:<input type="text" name="user" maxlength="20"></td>
+      </tr>
+      <tr>
+	<td>Password:<input type="password" name="pass"></td>
+      </tr>
+      <tr>
+	<td><input type="submit" name="Login"></td>
+      </tr>
+    </form>
+  </table>
+  <a href="/register">Sign up</a> if you don't have an userID<br>
+</Div>

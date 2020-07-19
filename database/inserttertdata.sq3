@@ -1,0 +1,3 @@
+insert into users values("3113204", "秦秀平", "2", "1", "d87233f60492a1bec2bda02af3a643141b963bb75edffb51463f6d41c96af60c","xWZWnFx0xzxGUJjGDu0nhpuks7y3dCl1w6r7kqKE","2","false");
+
+insert into reservations values();

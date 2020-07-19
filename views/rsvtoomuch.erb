@@ -1,0 +1,26 @@
+<Div align="center">
+  <h1>予約に失敗しました<br></h1>
+  予約が多すぎます。<br>
+  有効な予約は30分×2つです。既存の予約を削除しますか？<br><br>
+  <table border>
+    <% @own_rsv.each do |r| %><tr>
+      <td><%= @rooms.find(r.room_id).room_name %></td>
+      <td><%= @periods.find(r.period_id).period_char %></td>
+      <form method="post" action="/delete">
+        <input type="hidden" name="rsvdate" value="<%= r.rsv_date %>">
+        <input type="hidden" name="roomid" value="<%= r.room_id %>">
+        <input type="hidden" name="periodid" value="<%= r.period_id %>">
+        <td><input type="submit" name="delete" value="予約取消"></td>
+      </form>
+      <form method="post" action="/replace">
+        <input type="hidden" name="rsvtype" value="<%= r.rsv_type %>">
+        <input type="hidden" name="roomid" value="<%= @rmid %>">
+        <input type="hidden" name="periodid" value="<%= @pdid %>">
+        <input type="hidden" name="froomid" value="<%= r.room_id %>">
+        <input type="hidden" name="fperiodid" value="<%= r.period_id %>">
+        <td><input type="submit" name="delete" value="予約置換"></td>
+      </form>
+    </tr><% end %>
+  </table>
+  <a href="/">予約ページへ</a>
+</Div>

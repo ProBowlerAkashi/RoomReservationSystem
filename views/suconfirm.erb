@@ -1,0 +1,117 @@
+
+<% if @repeat_rsv==[] and @current_rsv==[]%>
+<Div align="center">
+    <h1>以下の内容で予約します<br></h1>
+</Div>
+<Div align="center">
+  <table border>
+    <tr>
+        <td> 開始日時 </td>
+        <td> 時間 </td>
+        <td> 教室 </td>
+    </tr>
+    <% if @repeat == "1" %>
+        <% @day.step(@expired_day, 7) do |t| %>
+        <tr>
+            <td> <%= t.strftime("%Y-%m-%d ") + "#{@periods.find(@pdid).period_char}" %> </td>
+            <td> <%= ((@length.to_i+1)/2).to_s.rjust(2,'0') %>:<%= ((@length.to_i+1)%2*30).to_s.rjust(2,'0') %> </td>
+            <td> <%= @rooms.find(@rmid).room_name %> </td>
+        </tr>
+        <% end %>
+    <% else %>
+        <tr>
+            <td> <%= @date + "#{@periods.find(@pdid).period_char}" %> </td>
+            <td> <%= ((@length.to_i+1)/2).to_s.rjust(2,'0') %>:<%= ((@length.to_i+1)%2*30).to_s.rjust(2,'0') %> </td>
+            <td> <%= @rooms.find(@rmid).room_name %> </td>
+        </tr>
+    <% end %>
+  </table>
+</Div>
+<Div align="center">
+  <form method="post" action="/sureserve">
+    <input type="hidden" name="name" value="<%= @name %>">
+    <input type="hidden" name="rsvtype" value="<%= @rsvtype %>">
+    <input type="hidden" name="roomid" value="<%= @rmid %>">
+    <input type="hidden" name="periodid" value="<%= @pdid %>">
+    <input type="hidden" name="repeat" value="<%= @repeat %>">
+    <input type="hidden" name="length" value="<%= @length %>">
+    <input type="hidden" name="rsvdate" value="<%= @date %>">
+    <input type="hidden" name="expired" value="<%= @expired %>">
+    <input type="hidden" name="wday" value="<%= @wday %>">
+    <input type="submit" value="予約登録">
+  </form>
+</Div>
+
+<% else %>
+<Div align="center">
+    <h1>以下の予約が重複しています<br></h1>
+</Div>
+<Div>
+  <h3>繰り返し予約</h3>
+  <table border align="center">
+    <tr>
+        <td> 種別 </td>
+        <td> 摘要 </td>
+        <td> 時間 </td>
+        <td> 期間 </td>
+        <td> 教室 </td>
+        <td> 予約削除 </td>
+    </tr>
+    <% @repeat_rsv.each do |rpt| %>
+      <tr>
+        <td> <%= @rsvtypes.find(rpt.rsv_type).name %> </td>
+        <td> <%= rpt.rsv_name %> </td>
+        <td> <%= rpt.rsv_wday %>, <%= @periods.find(rpt.period_id).period_char %> </td>
+        <td> ～<%= rpt.expired %> </td>
+        <td> <%= @rooms.find(rpt.room_id).room_name %> </td>
+        <form method="post" action="/sudelete">
+            <input type="hidden" name="repeat" value="1">
+            <input type="hidden" name="expired" value="<%= rpt.expired %>">
+            <input type="hidden" name="rsvdate" value="<%= rpt.rsv_wday %>">
+            <input type="hidden" name="roomid" value="<%= rpt.room_id %>">
+            <input type="hidden" name="periodid" value="<%= rpt.period_id %>">
+            <td><input type="submit" name="delete" value="予約削除"></td>
+        </form>   
+      </tr>
+    <% end %>
+  </table>
+</Div>
+<Div>
+  <h3>その他予約</h3>
+  <table border align="center">
+    <tr>
+        <td align="center"> 種別 </td>
+        <td align="center"> 摘要 </td>
+        <td align="center"> 日時 </td>
+        <td align="center"> 教室 </td>
+        <td align="center"> 予約削除 </td>
+    </tr>
+    <% @current_rsv.each do |rpt| %>
+      <tr>
+        <td> <%= @rsvtypes.find(rpt.rsv_type).name %> </td>
+        <td> <%= rpt.rsv_name %> </td>
+        <td> <%= rpt.rsv_date %>, <%= @periods.find(rpt.period_id).period_char %> </td>
+        <td> <%= @rooms.find(rpt.room_id).room_name %> </td>
+        <form method="post" action="/sudelete">
+            <input type="hidden" name="rsvdate" value="<%= rpt.rsv_date %>">
+            <input type="hidden" name="roomid" value="<%= rpt.room_id %>">
+            <input type="hidden" name="periodid" value="<%= rpt.period_id %>">
+            <td><input type="submit" name="delete" value="予約削除"></td>
+        </form>
+      </tr>
+    <% end %>
+  </table>
+    
+  <form method="post" action="/sudelete">
+    <input type="hidden" name="delall" value="1">
+    <input type="hidden" name="roomid" value="<%= @rmid %>">
+    <input type="hidden" name="periodid" value="<%= @pdid %>">
+    <input type="hidden" name="length" value="<%= @length %>">
+    <input type="hidden" name="rsvdate" value="<%= @date %>">
+    <input type="hidden" name="wday" value="<%= @wday %>">
+    <input type="submit" value="すべて削除">
+  </form>
+  
+  <a href="/supersv">予約ページへ</a>
+</Div>
+<% end %>

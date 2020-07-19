@@ -1,0 +1,55 @@
+create table rooms(
+  id integer primary key,
+  room_name char(128)
+);
+
+insert into rooms values(1,  'Concert Stage');
+insert into rooms values(2,  'KMA Paradise Hall');
+
+insert into rooms values(3,  'Lecture1');
+insert into rooms values(4,  'Lecture2');
+insert into rooms values(5,  'Lecture3');
+
+insert into rooms values(6,  'Studio1');
+insert into rooms values(7,  'Studio2');
+insert into rooms values(8,  'Studio3');
+insert into rooms values(9,  'Studio4');
+insert into rooms values(10, 'Studio5');
+insert into rooms values(11, 'Studio6');
+
+insert into rooms values(12, 'Lesson1');
+insert into rooms values(13, 'Lesson2');
+insert into rooms values(14, 'Lesson3');
+insert into rooms values(15, 'Lesson4');
+insert into rooms values(16, 'Lesson5');
+insert into rooms values(17, 'Lesson6');
+insert into rooms values(18, 'Lesson7');
+insert into rooms values(19, 'Lesson8');
+insert into rooms values(20, 'Lesson9');
+insert into rooms values(21, 'Lesson10');
+insert into rooms values(22, 'Lesson11');
+insert into rooms values(23, 'Lesson12');
+insert into rooms values(24, 'Lesson13');
+insert into rooms values(25, 'Lesson14');
+insert into rooms values(26, 'Lesson15');
+insert into rooms values(27, 'Lesson16');
+insert into rooms values(28, 'Lesson17');
+insert into rooms values(29, 'Lesson18');
+insert into rooms values(30, 'Lesson19');
+insert into rooms values(31, 'Lesson20');
+insert into rooms values(32, 'Lesson21');
+insert into rooms values(33, 'Lesson22');
+insert into rooms values(34, 'Lesson23');
+insert into rooms values(35, 'Lesson24');
+insert into rooms values(36, 'Lesson25');
+insert into rooms values(37, 'Lesson26');
+insert into rooms values(38, 'Lesson27');
+insert into rooms values(39, 'Lesson28');
+insert into rooms values(40, 'Lesson29');
+insert into rooms values(41, 'Lesson30');
+
+insert into rooms values(42, 'Computer Room');
+insert into rooms values(43, 'Rythmic World');
+insert into rooms values(44, 'Chamber Hall');
+insert into rooms values(45, 'Wing Room');
+

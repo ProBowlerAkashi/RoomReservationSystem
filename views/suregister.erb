@@ -1,0 +1,22 @@
+<Div align="center">
+
+  <h1>Sign up</h1>
+  <% if session[:userexist] == true %>
+  <font color="red">This User ID was already used.<br>Please try another one.</font>
+  <% end %>
+  <table border>
+    <form method="post" action="/susignup">
+      <tr><td>New UserID:<input type="text" name="nuser"></td></tr>
+      <tr><td>New Username:<input type="text" name="nname"></td></tr>
+      <tr><td>Department:<select name="permission">
+        <option value="1">講師</option>
+        <option value="0">教務</option>
+      </select></td></tr>
+      <input type="hidden" name="dept" value="0">   
+      <input type="hidden" name="grade" value="0">    
+      <tr><td>New Password:<input type="password" name="npass"></td></tr>
+      <tr><td>Password Collect:<input type="password" name="cpass"></td></tr> 
+      <tr><td><input type="submit" name="Submit" value="register"></td></tr>
+    </form>
+  </table>
+</Div>

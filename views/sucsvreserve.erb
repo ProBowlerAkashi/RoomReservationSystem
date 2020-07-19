@@ -1,0 +1,18 @@
+<Div align="center">
+<h1> CSVアップロード </h1>
+</Div>
+
+<Div align="center">
+予約をまとめて登録できます。(今までの予約はすべて削除されます)<br>
+CSVはカンマ区切りで、以下の形式で登録してください<br><br>
+
+種別コード,摘要,教室コード,繰り返し,日付,曜日,時間,期限<br>
+Excelのテンプレートはこちらからダウンロードできます。<br>
+</Div>
+
+<Div align="center">
+    <form method="post" action="/sucsvupload" enctype = "multipart/form-data">
+        <input type="file" name="csvfile">
+        <input type="submit" name="submit">
+    </form>
+</Div>

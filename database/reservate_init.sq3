@@ -1,0 +1,25 @@
+create table reservations (
+id integer primary key,
+user_id integer,
+rsv_type varchar(8),
+rsv_name char(128),
+room_id integer,
+rsv_date varchar(32),
+period_id integer,
+repeat boolean
+);
+
+create table rsvtypes (
+id integer primary key,
+name char(64)
+);
+
+
+insert into rsvtypes values(0,  '通常授業');
+insert into rsvtypes values(1,  '通常レッスン');
+insert into rsvtypes values(2,  '有料レンタル');
+insert into rsvtypes values(3,  '生徒使用');
+insert into rsvtypes values(4,  '講師使用');
+insert into rsvtypes values(5,  'TV会議');
+insert into rsvtypes values(6,  '講習会');
+insert into rsvtypes values(7,  'その他');

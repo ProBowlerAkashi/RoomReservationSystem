@@ -1,0 +1,30 @@
+<Div align="center">
+
+  <h1>Sign up</h1>
+  <% if session[:userexist] == true %>
+  <font color="red">This User ID was already used.<br>Please try another one.</font>
+  <% end %>
+  <table border>
+    <form method="post" action="/stdsignup">
+      <tr><td>New UserID:<input type="text" name="nuser"></td></tr>
+      <tr><td>New Username:<input type="text" name="nname"></td></tr>
+      <tr><td>Department:<select name="dept">
+        <% @department.each do |d| %>
+          <option value="<%= d.id %>"><%= d.dept_name %></option>
+        <% end %>
+      </select></td></tr>
+      <tr><td>Grade:<select name="grade">
+        <option value="0">単年過程他</option>
+        <option value="1">1年</option>
+        <option value="2">2年</option>
+        <option value="3">3年</option>
+        <option value="4">4年</option>
+        <option value="5">5年</option>
+        <option value="6">6年</option>
+      </select></td></tr>      
+      <tr><td>New Password:<input type="password" name="npass"></td></tr>
+      <tr><td>Password Collect:<input type="password" name="cpass"></td></tr> 
+      <tr><td><input type="submit" name="Submit" value="register"></td></tr>
+    </form>
+  </table>
+</Div>

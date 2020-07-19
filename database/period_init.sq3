@@ -1,0 +1,27 @@
+create table periods(
+  id integer primary key,
+  period_char char(20)
+);
+
+insert into periods values(1, "10:00");
+insert into periods values(2, "10:30");
+insert into periods values(3, "11:00");
+insert into periods values(4, "11:30");
+insert into periods values(5, "12:00");
+insert into periods values(6, "12:30");
+insert into periods values(7, "13:00");
+insert into periods values(8, "13:30");
+insert into periods values(9, "14:00");
+insert into periods values(10,"14:30");
+insert into periods values(11,"15:00");
+insert into periods values(12,"15:30");
+insert into periods values(13,"16:00");
+insert into periods values(14,"16:30");
+insert into periods values(15,"17:00");
+insert into periods values(16,"17:30");
+insert into periods values(17,"18:00");
+insert into periods values(18,"18:30");
+insert into periods values(19,"19:00");
+insert into periods values(20,"19:30");
+insert into periods values(21,"20:00");
+insert into periods values(22,"20:30");

@@ -1,0 +1,35 @@
+<Div Align="center">
+<h1>Reservation for Lessons</h1>
+</Div>
+<Div Align="center">
+
+  <table border>
+    <form method="post" action="/reserve">
+      <input type="hidden" name="rsvtype" value="1">
+      <tr>
+	    <td>Student Name:<input type="text" name="name" maxlength="40"></td>
+      </tr>
+      <tr>
+	    <td>Room:<select name="roomid">
+          <% @room.each do |r| %>
+            <option value="<%= r.id %>"><%= r.room_name %></option>
+          <% end %>
+        </select></td>
+      </tr>
+      <tr>
+	    <td>Date:<input type="date" name="rsvdate"></td>
+      </tr>
+      <tr>
+	    <td>Time:<select name="periodid">
+          <% @period.each do |p| %>
+            <option value="<%= p.id %>"><%= p.period_char %></option>
+          <% end %>
+        </select></td>
+      </tr>
+      </tr>
+      <tr>
+	    <td><input type="submit" value="SUBMIT"></td>
+      </tr>
+    </form>
+  </table>
+</Div>

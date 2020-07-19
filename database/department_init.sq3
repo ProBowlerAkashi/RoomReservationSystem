@@ -1,0 +1,34 @@
+create table departments(
+  id integer primary key,
+  dept_name varchar(32),
+  grade varchar(4)
+);
+
+insert into departments values(0,"リトミック本科","2");
+insert into departments values(1,"ピアノ演奏科","2");
+insert into departments values(2,"エレクトーン科","2");
+insert into departments values(3,"アートセラピー科","2");
+insert into departments values(4,"音楽療法学科","2");
+insert into departments values(5,"ピアノ調律科","2");
+insert into departments values(6,"ヴァイオリン製作科","2");
+insert into departments values(7,"ギタークラフト・リペア科","2");
+insert into departments values(8,"ドラムカスタマイザー科","2");
+insert into departments values(9,"楽器リペア科","2");
+insert into departments values(10,"音響デザイン科","2");
+insert into departments values(11,"作曲アレンジ科","2");
+insert into departments values(12,"コンピュータミュージック科","2");
+insert into departments values(13,"シンガーソングライター科","2");
+insert into departments values(14,"プロミュージシャン科","2");
+insert into departments values(15,"ウィンドオーケストラ科","2");
+insert into departments values(16,"弦演奏科","2");
+insert into departments values(17,"和楽科","2");
+insert into departments values(18,"ミュージカルバレエ部","2");
+insert into departments values(19,"声楽オペラ科","2");
+insert into departments values(20,"アニソン声優科","2");
+insert into departments values(21,"初等部","6");
+insert into departments values(22,"中等部","3");
+insert into departments values(23,"高等部","3");
+insert into departments values(24,"障がい児（者）学習コース","1");
+insert into departments values(25,"専門部","1");
+insert into departments values(26,"単科生コース","2");
+insert into departments values(27,"研究科","1");

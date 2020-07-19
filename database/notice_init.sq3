@@ -1,0 +1,7 @@
+create table notices (
+  id integer primary key,
+  date varchar(40),
+  expired integer,
+  title char(40),
+  main varchar(1048)
+);

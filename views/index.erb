@@ -1,0 +1,60 @@
+<Div align="center">
+  <h1>Welcome to KMA Room Reservation System</h1><br>
+</Div>
+<div align="center" class="example">
+  <table border>
+    <tr>
+      <td width="550" align="center"> Rooms </td>
+      <% @periods.each do |pd| %><!-- Every 30 minute -->
+      <td> <%= pd.period_char %> </td>
+      <% end %>
+    </tr>
+    <% @rooms.each do |rm| %><!-- Every Room -->
+    <tr>
+      <td width="550" align="center"><%= rm.room_name %></td>
+      <% @periods.each do |pd| %><!-- Every 30 minute -->
+        <% if @reservation.where(room_id: rm.id.to_s).where(period_id: pd.id.to_s).any? %>
+        <td bgcolor="<%= @color[rm.id][pd.id] %>" align="center"><%= @rsvby[rm.id][pd.id] %></td>
+        <% else %>     
+        <form method="post" action="/reserve">
+          <input type="hidden" name="name" value="<%= User.find(session[:userid]).user_name %>">
+          <input type="hidden" name="roomid" value="<%= rm.id %>">
+          <input type="hidden" name="periodid" value="<%= pd.id %>">
+          <input type="hidden" name="rsvtype" value="<%= @rsvtype %>"> 
+          <input type="hidden" name="rsvdate" value="<%= @now.strftime("%Y-%m-%d") %>"> 
+          <td><input type="submit" name="reserve" value="予約"></td>
+        </form>
+        <% end %>
+      <% end %>
+    </tr>
+    <% end %>
+  </table><br>
+
+</div>
+<% if session[:usertype] != 0 %>
+<Div align="center">  
+  <h3>My Reservation</h3>
+  <table border>
+    <tr>
+      <td width="200" align="center"> Date </td>
+      <td width="200" align="center"> Time </td>
+      <td width="200" align="center"> Room </td>
+      <td> Delete </td>
+    </tr>
+    <% @my_rsv.each do |rsv| %>
+      <tr>
+        <td> <%= rsv.rsv_date %> </td>
+        <td> <%= @periods.find(rsv.period_id).period_char %> </td>
+        <td> <%= @rooms.find(rsv.room_id).room_name %> </td>
+      <form method="post" action="/delete">
+        <input type="hidden" name="rsvdate" value="<%= rsv.rsv_date %>">
+        <input type="hidden" name="roomid" value="<%= rsv.room_id %>">
+        <input type="hidden" name="periodid" value="<%= rsv.period_id %>">
+        <td><input type="submit" name="delete" value="予約取消"></td>
+      </form>
+      </tr>
+    <% end %>
+
+  </table>
+</Div>
+<% end %>

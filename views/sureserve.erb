@@ -1,0 +1,73 @@
+<Div Align="center">
+<h1>Reservation as Administrator</h1>
+</Div>
+<Div Align="center">
+CSV形式を用いて予約登録する場合は<a  href="/sucsvreserve">こちら</a>
+</Div>
+<Div Align="center">
+
+  <table border>
+    <form method="post" action="/suconfirm">
+      <tr>
+	    <td>種別:<select name="rsvtype">
+        <% @rsvtype.each do |rsv| %>
+            <option value="<%= rsv.id %>"><%= rsv.name %></option>
+        <% end %>
+        </select></td>
+      </tr>
+      <tr>
+	    <td>名称:<input type="text" name="name" maxlength="64"></td>
+      </tr>
+      <tr>
+	    <td>教室:<select name="roomid">
+          <% @room.each do |r| %>
+            <option value="<%= r.id %>"><%= r.room_name %></option>
+          <% end %>
+        </select></td>
+      </tr>
+      <tr>
+	    <td>日付:<input type="date" name="rsvdate"><br>
+        繰り返し<input type="checkbox" name="repeat" value="1">:
+        <input type="radio" name="wday" value="0">日曜日|
+        <input type="radio" name="wday" value="1">月曜日|
+        <input type="radio" name="wday" value="2">火曜日|<br>
+        　　　　　　<input type="radio" name="wday" value="3">水曜日|
+        <input type="radio" name="wday" value="4">木曜日|
+        <input type="radio" name="wday" value="5">金曜日|
+        <input type="radio" name="wday" value="6">土曜日<br>
+        期限:<input type="date" name="expired">
+        </td>
+      </tr>
+      <tr>
+	    <td>時間:<select name="periodid">
+          <% @period.each do |p| %>
+            <option value="<%= p.id %>"><%= p.period_char %></option>
+          <% end %>
+        </select></td>
+      </tr>
+      <tr>
+	    <td>期間:<select name="length">
+        <option value="0">0:30</option>
+        <option value="1">1:00</option>
+        <option value="2">1:30</option>
+        <option value="3">2:00</option>
+        <option value="4">2:30</option>
+        <option value="5">3:00</option>
+        <option value="6">3:30</option>
+        <option value="7">4:00</option>
+        <option value="8">4:30</option>
+        <option value="9">5:00</option>
+        <option value="10">5:30</option>
+        <option value="11">6:00</option>
+        <option value="12">6:30</option>
+        <option value="13">7:00</option>
+        <option value="14">7:30</option>
+        <option value="15">8:00</option>
+        </select></td>
+      </tr>
+      <tr>
+	    <td><input type="submit" value="SUBMIT"></td>
+      </tr>
+    </form>
+  </table>
+</Div>

@@ -1,0 +1,10 @@
+create table repeatrsvs (
+id integer primary key,
+user_id integer,
+room_id integer,
+period_id integer,
+rsv_type varchar(8),
+rsv_name char(128),
+rsv_wday integer,
+expired varchar(32)
+);
